@@ -10,6 +10,15 @@ class Player():
         self.name = name
         position = []
         
+    def add_amount(self, account, amount):
+        self.account += amount
+        print(f"{amount} added to {self.name}'s account. The new balance 
+              is:{self.account}")
+        
+    def subtract_amount(self, account, amount):
+        self.account -= amount
+        print(f"{amount} subtracted from {self.name}'s account. The new balance 
+              is:{self.account}")
 
 def dice_roll():
     """Rolls a die to determine how many spaces a player needs to move forward"""
