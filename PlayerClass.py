@@ -18,9 +18,9 @@ class Player():
         self.account -= amount
         print(f"{amount} subtracted from {self.name}'s account. The new balance is:{self.account}")
     
-    def move(self, spaces):
-        self.position += spaces
-        print(f"{self.name}  has moved {spaces} spaces and it is now at a position {self.position}")
+    def move(self, dice_roll):
+        self.position += dice_roll
+        print(f"{self.name}  has moved {dice_roll} spaces and it is now at a position {self.position}")
         
 
 def dice_roll():
