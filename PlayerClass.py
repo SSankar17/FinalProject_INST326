@@ -22,7 +22,10 @@ class Player():
         self.position += dice_roll
         print(f"{self.name}  has moved {dice_roll} spaces and it is now at a position {self.position}")
         
-    
+class Boardgame:
+    def __init__(self, num_players):
+        self.num_players = num_players
+        self.players = []
 def dice_roll():
     """Rolls a die to determine how many spaces a player needs to move forward"""
     return random.randint(1,6)
