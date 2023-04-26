@@ -34,4 +34,10 @@ def dice_roll():
     """Rolls a die to determine how many spaces a player needs to move forward"""
     return random.randint(1,6)
     
-    
+def main(self):
+   temp = ""
+   with open("board_game_spaces.txt", "r", encoding="utf-8") as f:
+       for space in f:
+           if self.position == space[0]:
+               for space in space_dict.keys():
+                   temp += space_dict[space]
