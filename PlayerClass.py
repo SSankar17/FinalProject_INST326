@@ -43,7 +43,8 @@ class Boardgame:
         """
         self.num_players = num_players
         self.players = []
-    
+     #sequnce unpakcing 
+     # a, b, c = name, age, account
 
         
     def dice_roll():
