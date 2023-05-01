@@ -66,12 +66,14 @@ class Car:
         pass
 
 
+
 def main(self, filepath):
-    temp = ""
+    instruction = ""
     with open(filepath, "r", encoding="utf-8") as f:
         for space in f:
-            if self.position == space[0]:
-                for space in space_dict.keys():
-                    temp += space_dict[space]
-                
-    print(temp)
+            number, color = space.strip().split()
+            if self.position == number:
+                instruction = space_dict[color]
+                       
+    print(instruction)
+                       
