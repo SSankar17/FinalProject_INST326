@@ -70,8 +70,8 @@ class Car:
     def __init__(self, player_name, num_people=1):
         self.player_name = player_name 
         
-    def add_person(player_name):
-        pass
+    def add_person(self, player_name):
+        self.num_people += 1
 
 
 
@@ -82,6 +82,8 @@ def main(self, filepath):
             number, color = space.strip().split()
             if self.position == number:
                 instruction = space_dict[color]
+            if instruction == "Add Person":
+                add_person()
                
                 
     print(instruction)
