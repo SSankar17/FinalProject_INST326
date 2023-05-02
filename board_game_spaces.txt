@@ -8,3 +8,13 @@
 8 Purple
 9 Orange
 10 Green
+11 Blue
+12 Green 
+13 Purple
+14 Orange
+15 Purple 
+16 Blue 
+17 Green 
+18 Purple 
+19 Orange 
+20 Blue 
