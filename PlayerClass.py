@@ -57,8 +57,13 @@ class Boardgame:
                 if player.career:
                     player.money += player.career.salary
                     print(f"{player.name} received a pay raise of ${player.career.salary}!")
-     #sequnce unpakcing 
-     # a, b, c = name, age, account
+     
+    def get_winner(self, player_name):
+       scores = {}
+       for money in self.players:
+           scores = self.players.player_name, self.players.account
+        
+        scores.sort(key=lambda score: score[1], reverse=True)
 
         
     def dice_roll():
