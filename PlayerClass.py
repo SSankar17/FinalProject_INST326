@@ -43,6 +43,13 @@ class Boardgame:
         """
         self.num_players = num_players
         self.players = []
+
+    def generate_events(self):
+        for i in range(0, self.size, 10):
+            def get_pay_raise(player):
+                if player.career:
+                    player.money += player.career.salary
+                    print(f"{player.name} received a pay raise of ${player.career.salary}!")
      #sequnce unpakcing 
      # a, b, c = name, age, account
 
