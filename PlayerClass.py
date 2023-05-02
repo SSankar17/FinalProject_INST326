@@ -19,7 +19,7 @@ class Player():
     def __init__(self, name, account= 100000, position=0):
         """ initialize a player object with a name, account balance, and position on the board"""
         self.name = name
-        position = position
+        self.position = position if position <= 20
         self.account = account 
         
     def add_amount(self, account, amount):
