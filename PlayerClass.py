@@ -85,12 +85,15 @@ def main(self, filepath):
                
                 
     print(instruction)
-def parse_arguments():
+def parse_arguments(args):
     parser = argparse.ArgumentParser("Run a simplified version of the Life board game.")
     parser.add_argument("filename", type=str,  help="board name")
-    return parser.parse_args()
-        
+    parsed = parser.parse_args(args)
+    return parsed
+
+    
 if __name__ = "__main__":
+
     main()
 
                     
