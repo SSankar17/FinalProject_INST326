@@ -20,6 +20,7 @@ class Player():
         """ initialize a player object with a name, account balance, and position on the board"""
         self.name = name
         position = position
+        self.account = account 
         
     def add_amount(self, account, amount):
         """ add the specified amount to the player's account balance and prints the new balance
@@ -69,7 +70,6 @@ class Car:
     def __init__(self, player_name, num_people=1):
         self.player_name = player_name 
         
-        
     def add_person(player_name):
         pass
 
@@ -82,6 +82,7 @@ def main(self, filepath):
             number, color = space.strip().split()
             if self.position == number:
                 instruction = space_dict[color]
+               
                 
     print(instruction)
 def parse_arguments():
