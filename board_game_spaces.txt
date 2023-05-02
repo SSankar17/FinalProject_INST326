@@ -1,10 +1,10 @@
-1 Go to College! Pay $40,000 to the bank to fund your education
-2 Go to technical school! Pay $4000 to the bank to fund your education
-3 Get a part-time job! Recieve $300 paycheck
-4 You decide to buy some stocks. $400 deducted from your bank account
-5 You get a full time job! $3000 signing bonus 
-6 Payday! Recieve $300
-7 Pay your health insurance for the year! $200
-8 Recieve dividends on your purchased stocks. 5% of total holdings - recieve $60
-9 Retail therapy! Deduct $90 from your account 
-10 Roll the dice again! You get a second turn. 
+1 Green
+2 Blue
+3 Orange
+4 Purple
+5 Blue
+6 Green
+7 Orange
+8 Purple
+9 Orange
+10 Green
