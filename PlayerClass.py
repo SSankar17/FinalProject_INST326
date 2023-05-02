@@ -1,5 +1,6 @@
 import random 
 import seaborn as sns
+import argparse 
 #crack open sequence unpacking 
 # docstrings
 #start with pdf
@@ -81,6 +82,15 @@ def main(self, filepath):
             number, color = space.strip().split()
             if self.position == number:
                 instruction = space_dict[color]
-                       
+                
     print(instruction)
-                       
+def parse_arguments():
+    parser = argparse.ArgumentParser("Run a simplified version of the Life board game.")
+    parser.add_argument("filename", type=str,  help="board name")
+    return parser.parse_args()
+        
+if __name__ = "__main__":
+    main()
+
+                    
+   
