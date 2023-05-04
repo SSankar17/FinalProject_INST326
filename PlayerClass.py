@@ -22,7 +22,7 @@ class Player():
         Args: self = self, name = player name, account = account balance of 
         player, position = position on board"""
         self.name = name
-        self.position = position if 0<= position <= 20 else None
+        self.position = position if 0<= position <= 20 else 0
         self.account = account 
         
     def add_amount(self, amount):
@@ -31,7 +31,7 @@ class Player():
         Returns: statement of player name and account balance
         """
         self.account += amount
-        print(f"{amount} added to {self.name}'s account. The new balance is:{self.account}")
+        return f"{amount} added to {self.name}'s account. The new balance is:{self.account}"
         
     def subtract_amount(self, amount):
         """ subtract the specified amount to the player's account balance and prints the new balance
@@ -39,7 +39,7 @@ class Player():
         Returns: statement of player name and account balance
         """
         self.account -= amount
-        print(f"{amount} subtracted from {self.name}'s account. The new balance is:{self.account}")
+        return f"{amount} subtracted from {self.name}'s account. The new balance is:{self.account}"
     
     def move(self, dice_roll):
         """ moves the player by the number space specified by ht e dice roll  and prints the new position
@@ -47,7 +47,7 @@ class Player():
         Returns: statement of the dice roll and the new position of the player on the board
         """
         self.position += dice_roll
-        print(f"{self.name}  has moved {dice_roll()} spaces and it is now at a position {self.position}")
+        return f"{self.name}  has moved {dice_roll()} spaces and it is now at a position {self.position}"
         
 class Boardgame:
     """create an instance for the boardgame
