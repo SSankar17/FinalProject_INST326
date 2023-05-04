@@ -75,11 +75,9 @@ class Boardgame:
                     print(f"{player.name} received a pay raise of ${player.career.salary}!")
      
     def get_winner(self, player_name):
-       scores = {}
-       for money in self.players:
-           scores = self.players.player_name, self.players.account
-        
-        scores.sort(key=lambda score: score[1], reverse=True)
+       scores = []
+       name_score = [[i for i, j in self.players], [j for i, j in self.players]]
+       name_score.sort(reverse=True)
 
         
     def dice_roll():
