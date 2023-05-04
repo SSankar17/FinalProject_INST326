@@ -22,7 +22,7 @@ class Player():
         Args: self = self, name = player name, account = account balance of 
         player, position = position on board"""
         self.name = name
-        self.position = position if 0<= position <= 20 else 0
+        self.position = position if 0<= position <= 20 else None
         self.account = account 
         
     def add_amount(self, amount):
@@ -76,8 +76,7 @@ class Boardgame:
        scores = {}
        for money in self.players:
            scores = self.players.player_name, self.players.account
-        
-        scores.sort(key=lambda score: score[1], reverse=True)
+           scores.sort(key=lambda score: score[1], reverse=True)
 
         
     def dice_roll():
