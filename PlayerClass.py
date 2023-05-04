@@ -22,7 +22,7 @@ class Player():
         Args: self = self, name = player name, account = account balance of 
         player, position = position on board"""
         self.name = name
-        self.position = position if position <= 20
+        self.position = position if 0<= position <= 20 else 0
         self.account = account 
         
     def add_amount(self, amount):
