@@ -17,41 +17,52 @@ class Player():
         Account (float) - amount of money in player's account"""
     
     def __init__(self, name, account= 100000, position=0):
-        """ initialize a player object with a name, account balance, and position on the board"""
+        """ initialize a player object with a name, account balance, and position on the board
+        Args: self = self, name = player name, account = account balance of 
+        player, position = position on board"""
         self.name = name
         self.position = position if position <= 20
         self.account = account 
         
-    def add_amount(self, account, amount):
+    def add_amount(self, amount):
         """ add the specified amount to the player's account balance and prints the new balance
+        Args: self = self, amount = current amount balance of player
+        Returns: statement of player name and account balance
         """
         self.account += amount
         print(f"{amount} added to {self.name}'s account. The new balance is:{self.account}")
         
-    def subtract_amount(self, account, amount):
+    def subtract_amount(self, amount):
         """ subtract the specified amount to the player's account balance and prints the new balance
+        Args: Args: self = self, amount = current amount balance of player
+        Returns: statement of player name and account balance
         """
         self.account -= amount
         print(f"{amount} subtracted from {self.name}'s account. The new balance is:{self.account}")
     
     def move(self, dice_roll):
         """ moves the player by the number space specified by ht e dice roll  and prints the new position
+        Args: self = self, dice_role = roll of a six sided die
+        Returns: statement of the dice roll and the new position of the player on the board
         """
         self.position += dice_roll
         print(f"{self.name}  has moved {dice_roll()} spaces and it is now at a position {self.position}")
         
 class Boardgame:
     """create an instance for the boardgame
-    attributes: 
+    Attributes: 
       num players(int)= number of players
     """
     def __init__(self, num_players):
-        """
+        """ initiallizes the number of players
+        Args: self=self, num_player = the number of players playing
         """
         self.num_players = num_players
         self.players = []
 
     def generate_events(self):
+        """
+        """
         for i in range(0, self.size, 10):
             def get_pay_raise(player):
                 if player.career:
@@ -92,6 +103,7 @@ def main(self, filepath):
                
                 
     print(instruction)
+    
 def parse_arguments(args):
     parser = argparse.ArgumentParser("Run a simplified version of the Life board game.")
     parser.add_argument("filename", type=str,  help="board name")
