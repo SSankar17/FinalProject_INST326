@@ -61,7 +61,9 @@ class Boardgame:
         self.players = []
 
     def generate_events(self):
-        """
+        """Generate pay raise events for players every 10 spaces on the game board.This function iterates over the range from 0 to self.size in the steps of 10 and calls get_pay_raise
+            args: self
+            returns: None
         """
         for i in range(0, self.size, 10):
             def get_pay_raise(player):
