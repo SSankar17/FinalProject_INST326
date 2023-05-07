@@ -22,24 +22,28 @@ class Player():
         Args: self = self, name = player name, account = account balance of 
         player, position = position on board"""
         self.name = name
-        self.position = position if 0<= position <= 20 else 0
+        self.position = position if position <= 20 else 0
         self.account = account 
         
-    def add_amount(self, amount):
+    def __add__(self, other):
         """ add the specified amount to the player's account balance and prints the new balance
         Args: self = self, amount = current amount balance of player
         Returns: statement of player name and account balance
-        """
-        self.account += amount
-        return f"{amount} added to {self.name}'s account. The new balance is:{self.account}"
+        Raises: TypeError: if other 
+        """  
+        if not isinstance(other, Player):
+            raise TypeError(f"unsupported operand type for other")
+        self.account + other   
+    
         
-    def subtract_amount(self, amount):
+    def __sub__(self, other):
         """ subtract the specified amount to the player's account balance and prints the new balance
         Args: Args: self = self, amount = current amount balance of player
         Returns: statement of player name and account balance
         """
-        self.account -= amount
-        return f"{amount} subtracted from {self.name}'s account. The new balance is:{self.account}"
+        if not isinstance(other, Player):
+            raise TypeError(f"unsupported operand type for other")
+        self.account - other   
     
     def move(self, dice_roll):
         """ moves the player by the number space specified by ht e dice roll  and prints the new position
@@ -47,7 +51,7 @@ class Player():
         Returns: statement of the dice roll and the new position of the player on the board
         """
         self.position += dice_roll
-        return f"{self.name}  has moved {dice_roll()} spaces and it is now at a position {self.position}"
+        print(f"{self.name}  has moved {dice_roll()} spaces and it is now at a position {self.position}")
         
 class Boardgame:
     """create an instance for the boardgame
@@ -62,9 +66,7 @@ class Boardgame:
         self.players = []
 
     def generate_events(self):
-        """Generate pay raise events for players every 10 spaces on the game board.This function iterates over the range from 0 to self.size in the steps of 10 and calls get_pay_raise
-            args: self
-            returns: None
+        """
         """
         for i in range(0, self.size, 10):
             def get_pay_raise(player):
