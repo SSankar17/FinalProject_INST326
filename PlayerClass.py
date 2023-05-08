@@ -201,7 +201,7 @@ def main(self): #Sanjana
                                     print (f"You landed on purple so {tax} will be subtracted from your account as taxes")
                                     
                                     
-def parse_args(args):
+def parse_args(args):#glory
     parser = argparse.ArgumentParser("Run a simplified version of the Life board game.")
     parser.add_argument("filename", type=str,  help="board name")
     parsed = parser.parse_args(args)
