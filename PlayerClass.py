@@ -77,7 +77,7 @@ class Boardgame:
             def get_pay_raise (player):
                 if player.career:
                     player.money += player.career.salary
-                    print(f"{player.name} received a pay raise of ${player.career.salary}!")
+                    print(f"{player.name} has gotten a pay raise of ${player.career.salary}!")
      
     def get_winner(self): #glory
         scores = [(player.name, player.account) for player in self.players]
