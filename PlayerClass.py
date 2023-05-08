@@ -82,7 +82,7 @@ class Boardgame:
     def get_winner(self): #glory
         scores = [(player.name, player.account) for player in self.players]
         scores.sort(key=lambda x: x[1], reverse=True)
-        winner = scores[0][0]
+        winner = scores
         return winner
         
     
