@@ -97,60 +97,109 @@ class Car: #sanjana
 
 def main(self, filepath): #Sanjana 
     
-    space_dict = {"Green": "+300",
-              "Blue": "-200",
-              "Purple": "Add Person",
-              "Orange": "+45"}
-    
     players = []
+    cars = []
 
+    green_spaces = [100, 200, 300, 400]
+    blue_spaces = [500, 400, 200, 300]
+    orange_spaces = [1,2,3,4]
+    purple_spaces = [23, 45, 65, 89]
 
     num_players = int(input("How many players for this game?: "))
     if num_players == 2:
-        p1 = input("Add a name: ")
+        p1 = input("Add a name for p1: ")
         players.append(Player(p1))
-        p2 = input("Add a name: ")
+        cars.append(Car(p1))
+
+        p2 = input("Add a name for p2: ")
         players.append(Player(p2))
+        cars.append(Car(p2))
+
     elif num_players == 3:
-        p1 = input("Add a name: ")
+        p1 = input("Add a name for p1: ")
         players.append(Player(p1))
-        p2 = input("Add a name: ")
+        cars.append(Car(p1))
+
+        p2 = input("Add a name for p2: ")
         players.append(Player(p2))
-        p3 = input("Add a name: ")
+        cars.append(Car(p2))
+
+        p3 = input("Add a name for p3: ")
         players.append(Player(p3))
+        cars.append(Car(p3))
+
     elif num_players == 4:
-        p1 = input("Add a name: ")
+        p1 = input("Add a name for p1: ")
         players.append(Player(p1))
-        p2 = input("Add a name: ")
+        cars.append(Car(p1))
+
+        p2 = input("Add a name for p2: ")
         players.append(Player(p2))
-        p3 = input("Add a name: ")
+        cars.append(Car(p2))
+
+        p3 = input("Add a name for p3: ")
         players.append(Player(p3))
-        p4 = input("Add a name: ")
+        cars.append(Car(p3))
+
+        p4 = input("Add a name for p4: ")
         players.append(Player(p4))
+        cars.append(Car(p4))
+
+    else: 
+        print("Enter a 2, 3, or 4.")
 
     while True: 
         count = 0
         for x in players:
-            players[count].move()
             print("\nPlayer" + ":",players[count].name)
             print("Balance: $",players[count].account)
             print("Position",players[count].position)
-            
+            print("Car: ", cars[count].num_people)
+            print("----------------------------------")
+            count += 1
 
-        instruction = ""
-        with open("board_game_spaces.txt", "r", encoding="utf-8") as f:
-            for space in f:
-                number, color = space.strip().split()
-                for x in players:
-                    if players[count].position == number:
-                        player_space = color
-                        for player_space in space_dict:
-                            instruction = space_dict[player_space]
-                            count +=1
+            game = Boardgame(num_players, players)
 
-        if instruction[0] == "+":
-            self.account += int(instruction[:-1])
-    
+            instruction = ""
+            with open("board_game_spaces.txt", "r", encoding="utf-8") as f:
+                for space in f:
+                    number, color = space.strip().split()
+                    for x in players:
+                        players[count].move() #Where do we move this to make this work 
+                        curr_player = x.position 
+                        if curr_player == number:
+                            player_space = color
+
+
+                            if player_space =="Green":
+                                #Add money if green 
+                                add = green_spaces[random.randint(1,4)]
+                                players[x] + add
+                                print (f"You landed on green so {add} will be added to your account")
+
+                            if player_space =="Blue":
+                                #Subtract money if Blue 
+                                sub = blue_spaces[random.randint(1,4)]
+                                players[x] - sub
+                                print (f"You landed on blue so {sub} will be subtracted from your account")
+
+                            if player_space == "Orange":
+                                #Add person if orange
+                                additions = random.randint(1,4) 
+                                players[x].add_person(additions)
+                                print (f"You landed on orange so {additions} will be added to your car")
+
+                            else:
+                                if random.randint(1,2) == 1:
+                                    #Add amount if randomly chooses 1
+                                    tax_refund = purple_spaces[random.randint(1,4)]
+                                    players[x] += tax
+                                    print (f"You landed on purple so {tax_refund} will be added to your account as a tax refund")
+                                else: 
+                                    #subtract amount if randomly chooses 2
+                                    tax = purple_spaces[random.randint(1,4)]
+                                    players[x] -= tax
+                                    print (f"You landed on purple so {tax} will be subtracted from your account as taxes")
 def parse_args(args):
     parser = argparse.ArgumentParser("Run a simplified version of the Life board game.")
     parser.add_argument("filename", type=str,  help="board name")
