@@ -95,7 +95,7 @@ class Car: #sanjana
 
 
 
-def main(self, filepath): #Sanjana 
+def main(self): #Sanjana 
     
     players = []
     cars = []
@@ -158,31 +158,30 @@ def main(self, filepath): #Sanjana
             print("----------------------------------")
             count += 1
 
-            game = Boardgame(num_players, players)
-
             instruction = ""
             with open("board_game_spaces.txt", "r", encoding="utf-8") as f:
                 for space in f:
                     number, color = space.strip().split()
                     for x in players:
-                        players[count].move() #Where do we move this to make this work 
-                        curr_player = x.position 
-                        if curr_player == number:
+                        x.move() #Why is this creating an error in dice roll 
+
+                        if x.position == number:
                             player_space = color
 
 
                             if player_space =="Green":
                                 #Add money if green 
                                 add = green_spaces[random.randint(1,4)]
-                                players[x] + add
+                                x.account + add
                                 print (f"You landed on green so {add} will be added to your account")
 
                             if player_space =="Blue":
                                 #Subtract money if Blue 
                                 sub = blue_spaces[random.randint(1,4)]
-                                players[x] - sub
+                                x.account - sub
                                 print (f"You landed on blue so {sub} will be subtracted from your account")
 
+                            # How do we add people into the car?
                             if player_space == "Orange":
                                 #Add person if orange
                                 additions = random.randint(1,4) 
@@ -193,13 +192,15 @@ def main(self, filepath): #Sanjana
                                 if random.randint(1,2) == 1:
                                     #Add amount if randomly chooses 1
                                     tax_refund = purple_spaces[random.randint(1,4)]
-                                    players[x] += tax
+                                    x.account += tax
                                     print (f"You landed on purple so {tax_refund} will be added to your account as a tax refund")
                                 else: 
                                     #subtract amount if randomly chooses 2
                                     tax = purple_spaces[random.randint(1,4)]
-                                    players[x] -= tax
+                                    x.account -= tax
                                     print (f"You landed on purple so {tax} will be subtracted from your account as taxes")
+                                    
+                                    
 def parse_args(args):
     parser = argparse.ArgumentParser("Run a simplified version of the Life board game.")
     parser.add_argument("filename", type=str,  help="board name")
