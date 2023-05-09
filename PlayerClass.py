@@ -1,6 +1,6 @@
 import re
 import random
-class Player:
+class Player: 
     """Creates an instance of a player
     
     Attributes:
@@ -73,7 +73,7 @@ class Player:
         """
         return f"Player({self.name}, {str(self.account)}, {str(self.position)})"
 
-class Boardgame:
+class Boardgame: 
     """create an instance for the boardgame
     
     Attributes: 
@@ -104,7 +104,7 @@ class Boardgame:
                     print(f"{player.name} received a pay raise of ${player.career.salary}!")
 
     
-    def read_file(self):
+    def read_file(self): #Sanjana - with open
         """ reads in a file containing the board game spaces information and 
         stores the information into a dictionary
         
@@ -122,7 +122,7 @@ class Boardgame:
             return board_game
     
     
-    def check_space(self, player):
+    def check_space(self, player): #Sanjana 
         """checks what space the player landed on and performs a function on that 
         depending on the color. If the player lands on gree, money is added to their
         account. If they land on blue, money is subtracted from their account. If they 
@@ -154,7 +154,6 @@ class Boardgame:
             player.account -= sub
             print (f"You landed on blue so {sub} will be subtracted from your account")
 
-        # How do we add people into the car?
         if player_space == "Orange":
             #Add person if orange
             additions = orange_spaces[random.randint(0,3)]
@@ -196,51 +195,24 @@ class Car: #sanjana
         Returns number of people and additions of car"""
         return self.num_people + additions
 
-def main():
+def main(): #Sanjana - Lambda expression to use max
+    """ This is where the program is run - the program asks the user
+    for a number of players which has to be between 2 and 4. After that
+    the user is asked to assign names to the players. Once that is done,
+    the simulation runs and the players move with their bank accounts 
+    implementing the changes according to the space they land on. The
+    winner is listed at the end.
+    
+    Side Effect: Player objects creates, BoardGame object created - 
+    Player Objects move forward until someone reaches 20 and the winner
+    is declared."""
     players = []
     #cars = []
 
-
-    #clean up lines 11-48 to iterate efficiently - loop
     num_players = int(input("How many players for this game?: "))
-    if num_players == 2:
-        p1 = input("Add a name for p1: ")
-        players.append(Player(p1))
-        #cars.append(Car(p1)) #pass the name of the player to player then the car
-
-        p2 = input("Add a name for p2: ")
-        players.append(Player(p2))
-        #cars.append(Car(p2))
-
-    elif num_players == 3:
-        p1 = input("Add a name for p1: ")
-        players.append(Player(p1))
-        #cars.append(Car(p1))
-
-        p2 = input("Add a name for p2: ")
-        players.append(Player(p2))
-        #cars.append(Car(p2))
-
-        p3 = input("Add a name for p3: ")
-        players.append(Player(p3))
-        #cars.append(Car(p3))
-
-    elif num_players == 4:
-        p1 = input("Add a name for p1: ")
-        players.append(Player(p1))
-        #cars.append(Car(p1))
-
-        p2 = input("Add a name for p2: ")
-        players.append(Player(p2))
-        #cars.append(Car(p2))
-
-        p3 = input("Add a name for p3: ")
-        players.append(Player(p3))
-        #cars.append(Car(p3))
-
-        p4 = input("Add a name for p4: ")
-        players.append(Player(p4))
-        #cars.append(Car(p4))
+    if num_players == 2 or num_players == 3 or num_players ==4:
+        for x in range(num_players):
+            players.append(Player(input(f"Add a name for player{x+1}")))
     else: 
         print("Enter a 2, 3, or 4.")
 
@@ -255,19 +227,21 @@ def main():
             print("Car: ", x.car.num_people)
             print("----------------------------------")
             print("Now this player will move")
+            print("----------------------------------")
 
-            #if x.position <= 20: #only play game if position <= 20
             x.move()
             print(f"{x.name} is at position {x.position}")
-            #player_space = board_game[x.position]
             boardGame1.check_space(x)
 
             if x.position == 20:
                 print("You are at the end.")
                 max_score = max(players, key=lambda x: x.account)
-                print("The winner is " +max_score.name)
+                print("The winner is " +max_score.name +" with $" +str(max_score.account))
                     
                 break
         if x.position == 20:
             break 
+        
+                      
+        
 main()
