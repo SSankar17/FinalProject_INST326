@@ -241,7 +241,5 @@ def main(): #Sanjana - Lambda expression to use max
                 break
         if x.position == 20:
             break 
-        
-                      
-        
+         
 main()
