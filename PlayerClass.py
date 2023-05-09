@@ -153,17 +153,17 @@ class Boardgame:
             player.car.add_person(additions)  
             print (f"You landed on orange so {additions} will be added to your car")
 
-        else:
+        if player_space == "Purple":
             if random.randint(1,2) == 1:
                 #Add amount if randomly chooses 1
                 tax_refund = purple_spaces[random.randint(0,3)]
-                player.account += tax_refund
-                print (f"You landed on purple so {tax_refund} will be added to your account as a tax refund")
+                player.account += tax_refund*player.car.num_people
+                print (f"You landed on purple so {tax_refund*player.car.num_people} will be added to your account as a tax refund")
             else: 
                 #subtract amount if randomly chooses 2
                 tax = purple_spaces[random.randint(0,3)]
-                player.account -= tax
-                print (f"You landed on purple so {tax} will be subtracted from your account as taxes")
+                player.account -= tax*player.car.num_people
+                print (f"You landed on purple so {tax*player.car.num_people} will be subtracted from your account as taxes")
 
 class Car: #sanjana 
     def __init__(self, player_name, num_people=1):
