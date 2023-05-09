@@ -2,14 +2,24 @@ import re
 import random
 class Player:
     """Creates an instance of a player
+    
     Attributes:
-        Name (str) - player name
-        Account (float) - amount of money in player's account"""
+        name (str) - player name
+        account (int) - amount of money in player's account
+        position (int) - the current position of the player which starts at 0
+        car (Car object) - creates a car object for the player"""
     
     def __init__(self, name, account= 1000, position=0): #Sanjana - regex
-        """ initialize a player object with a name, account balance, and position on the board
+        """ initialize a player object with a name, account balance, and 
+        position on the board
+        
         Args: self = self, name = player name, account = account balance of 
-        player, position = position on board"""
+        player which is 1000 by default, position = position on board which starts at 0
+        
+        Side Effects: Name validation on the name to ensure that the name doesn't 
+        contain anything other than letters
+        
+        """
         r = re.search(r"(?P<name>[A-Za-z]{2,25}([A-Za-z]{2,25})?)", name)
         self.name = r.group(0)
         
@@ -18,36 +28,39 @@ class Player:
         self.account = account 
         
     def __add__(self, other): #Lauren - magic methods
-        """ add the specified amount to the player's account balance and prints the new balance
-        Args: self = self, amount = current amount balance of player
-        Returns: statement of player name and account balance
-        Raises: TypeError: if other 
+        """ adds the specified amount to the player's account balance and returns 
+        the new balance
+        
+        Args: self = self, other = anount to be added
+        
+        Returns: account balance
         """ 
         self.account = self.account + other.account
         return self.account
        
     def __sub__(self, other): #Lauren - magic methods
-        """ subtract the specified amount to the player's account balance and prints the new balance
-        Args: Args: self = self, amount = current amount balance of player
-        Returns: statement of player name and account balance
-        """
+        """ subtracts the specified amount to the player's account balance and returns 
+        the new balance
+        
+        Args: self = self, other = amount to be subtracted
+        
+        Returns: account balance
+        """ 
         self.account = self.account - other.account
         return self.account  
     
-    def move(self): #Sanjana 
-        """ moves the player by the number space specified by the dice roll  and prints the new position
-        Args: self = self, dice_role = roll of a six sided die
-        Returns: statement of the dice roll and the new position of the player on the board
+    def move(self): #Sanjana: conditional expression
+        """ moves the player by the number space specified by the dice roll
+       
+        Args: self = self
+        
+        Side Effects: updates the player's position to the inital postition plus
+        whatever number they rolled on the dice 
         """
         dice_roll = random.randint(1, 6)  # Roll a dice
         self.position = (self.position + dice_roll) if (self.position + dice_roll) <= 20 else 20
-        #while self.position <= 20:
-        #    return self.position
-        #else:
-        #    print("You cannot move, you are at the end of the game")
-            
     
-    def __repr__(self):
+    def __repr__(self): 
         return f"{self.name} has {self.account} left and is at position {self.position}"
         
     def __str__(self):
@@ -55,12 +68,19 @@ class Player:
 
 class Boardgame:
     """create an instance for the boardgame
+    
     Attributes: 
-      num players(int)= number of players
+      num_players(int)= number of players
+      players (list of Player Objects) = list of players playing the game 
+      board_game (dictionary) = a dictionary containing the spaces in the board game
     """
+    
     def __init__(self, num_players, players): #sanjana
-        """ initiallizes the number of players
-        Args: self=self, num_player = the number of players playing
+        """ initializes the number of players, player list, and the board game
+        Args: 
+            self=self
+            num_players = the number of players playing
+            players (list of Player objects) = the Players in the game
         """
         self.num_players = num_players
         self.players = []
@@ -74,8 +94,17 @@ class Boardgame:
                 if player.career:
                     player.money += player.career.salary
                     print(f"{player.name} received a pay raise of ${player.career.salary}!")
+
     
     def read_file(self):
+        """ reads in a file containing the board game spaces information and 
+        stores the information into a dictionary
+        
+        Side Effects = parse through a file using a for loop in a with statement and populates
+        a dictionary
+        
+        Returns: board_game (dictionary) = xontains information about the board game spaces
+        """
         board_game = {}
         with open("board_game_spaces.txt", "r", encoding="utf-8") as f:
         #read this once and load it into dictionary and find the corresponding color
@@ -86,6 +115,18 @@ class Boardgame:
     
     
     def check_space(self, player):
+        """checks what space the player landed on and performs a function on that 
+        depending on the color. If the player lands on gree, money is added to their
+        account. If they land on blue, money is subtracted from their account. If they 
+        land on orange, a person is added to their car. If they land on purple, depending
+        on whether the random number generator returns a 1, they get a tax refund, otherwise 
+        they have to pay taxes. 
+        
+        Args: player (Player object) = contains information about a players position &
+        account balance
+        
+        Side Effects: updates to player account balance or number of people in car 
+        """
         green_spaces = [100, 200, 300, 400]
         blue_spaces = [500, 400, 200, 300]
         orange_spaces = [1,2,3,4]
@@ -108,7 +149,7 @@ class Boardgame:
         # How do we add people into the car?
         if player_space == "Orange":
             #Add person if orange
-            additions = random.randint(0,3) 
+            additions = orange_spaces[random.randint(0,3)]
             player.car.add_person(additions)  
             print (f"You landed on orange so {additions} will be added to your car")
 
