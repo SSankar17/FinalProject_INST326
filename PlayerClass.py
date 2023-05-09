@@ -61,9 +61,16 @@ class Player:
         self.position = (self.position + dice_roll) if (self.position + dice_roll) <= 20 else 20
     
     def __repr__(self): 
+        """
+        Args: self = self
+        Returns: formal string representation of name account and position. """
         return f"{self.name} has {self.account} left and is at position {self.position}"
         
     def __str__(self):
+        """
+        Args: self = self
+        Returns: informal string representation of name, account, and position.
+        """
         return f"Player({self.name}, {str(self.account)}, {str(self.position)})"
 
 class Boardgame:
@@ -81,6 +88,7 @@ class Boardgame:
             self=self
             num_players = the number of players playing
             players (list of Player objects) = the Players in the game
+        Side Effects: updates the number of players and the list of players
         """
         self.num_players = num_players
         self.players = []
@@ -103,7 +111,7 @@ class Boardgame:
         Side Effects = parse through a file using a for loop in a with statement and populates
         a dictionary
         
-        Returns: board_game (dictionary) = xontains information about the board game spaces
+        Returns: board_game (dictionary) = contains information about the board game spaces
         """
         board_game = {}
         with open("board_game_spaces.txt", "r", encoding="utf-8") as f:
@@ -166,11 +174,26 @@ class Boardgame:
                 print (f"You landed on purple so {tax*player.car.num_people} will be subtracted from your account as taxes")
 
 class Car: #sanjana 
+    """
+    Creates an instance for the car
+    Attributes: 
+        name (str) - player name
+        num_players = the number of players playing
+    """
+   
     def __init__(self, player_name, num_people=1):
+        """
+        Args: self = self, player_name = name of player, num_people = num of
+        people in the car
+        
+        Side Effects: updates the list of number of poeple according to the 
+        car"""
         self.player_name = player_name 
         self.num_people = num_people
         
     def add_person(self, additions):
+        """Args: self = self, additions = addition (math)
+        Returns number of people and additions of car"""
         return self.num_people + additions
 
 def main():
