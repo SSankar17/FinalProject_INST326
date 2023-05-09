@@ -74,13 +74,6 @@ class Boardgame:
                 if player.career:
                     player.money += player.career.salary
                     print(f"{player.name} received a pay raise of ${player.career.salary}!")
-     
-    def get_winner(self): #Sanjana
-        score_dict = {}
-        for player in self.players:
-            score_dict[player.name] = player.account
-        max_val = max(score_dict.values())
-        return max_val
     
     def read_file(self):
         board_game = {}
@@ -206,9 +199,11 @@ def main():
             boardGame1.check_space(x)
 
             if x.position == 20:
-                print("You are at the end. The winner is " + boardGame1.get_winner())
+                print("You are at the end.")
+                max_score = max(players, key=lambda x: x.account)
+                print("The winner is " +max_score.name)
+                    
                 break
         if x.position == 20:
-            break #return - this will be replaced
-        
+            break 
 main()
