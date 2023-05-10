@@ -1,4 +1,5 @@
 import re
+import argparse
 import random
 class Player: 
     """Creates an instance of a player
@@ -93,16 +94,6 @@ class Boardgame:
         self.num_players = num_players
         self.players = []
         self.board_game = self.read_file()
-
-    def generate_events(self): #Glory
-        """
-        """
-        for i in range(0, self.size, 10):
-            def get_pay_raise(player):
-                if player.career:
-                    player.money += player.career.salary
-                    print(f"{player.name} received a pay raise of ${player.career.salary}!")
-
     
     def read_file(self): #Sanjana - with open
         """ reads in a file containing the board game spaces information and 
@@ -194,7 +185,14 @@ class Car: #sanjana
         """Args: self = self, additions = addition (math)
         Returns number of people and additions of car"""
         return self.num_people + additions
-
+    
+    
+def parse_args(args): #Glory
+    parser= argparse.ArgumentParser("runs a simplified version of the Life boardgame")
+    parser.add_argument("filename", type=str, help="boardgame")
+    parsed = parser.parse_args(args)
+    return parsed
+                             
 def main(): #Sanjana - Lambda expression to use max
     """ This is where the program is run - the program asks the user
     for a number of players which has to be between 2 and 4. After that
