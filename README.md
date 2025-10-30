@@ -1,4 +1,4 @@
-# Final Project – INST326
+# Self Playing Game of Life: Final Project – INST326
 
 ## Repository Contents
 | File Name | Description |
